@@ -2,13 +2,17 @@ import time as Time
 
 
 class Task(object):
-    def __init__(self, task_name, task_time):
+    def __init__(self, task_name, task_time, in_time):
         self.task_time = float(task_time)
         self.task_name = task_name
         self.end_time = None
         self.run_time = 0
-        self.start_time = Time.time()
+        self.start_time = None
         self.completed = False
+        self.in_time = in_time
+
+    def get_started(self):
+        self.start_time = Time.time()
 
     def get_info(self):
         wait_time = self.end_time - (self.start_time + self.run_time)
